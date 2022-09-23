@@ -1,8 +1,17 @@
 const models = require('./models.js');
 
 module.exports = {
-  getTopSores: (req, res) => {
-    const result = models.getTopSores();
-    res.send(result);
+  getTopScores: (req, res) => {
+    models
+      .getTopScores()
+      .then((result) => res.send(result))
+      .catch((err) => res.send(err));
+  },
+
+  postTopScore: (req, res) => {
+    models
+      .postTopScore()
+      .then((result) => res.send(result))
+      .catch((err) => res.send(err));
   },
 };
