@@ -1,19 +1,18 @@
-import React from 'react';
-import Game from './Game.jsx';
+import React, { useState, useEffect } from 'react';
+import Game from './game/Game.jsx';
+import StartPage from './StartPage.jsx';
+import { crashed } from './stars.js';
+
+export const GameState = React.createContext();
 
 export default function App() {
+  const [appSt, setAppSt] = useState('start');
+
   return (
     <>
-      <div className='header'>
-        <div className=' headIc'>
-          <i className='fa-solid fa-rocket fa-rotate-270' />
-        </div>
-        <h1>Random Ship</h1>
-        <div className=' headIc'>
-          <i className='fa-solid fa-rocket headIc' />
-        </div>
-      </div>
-      <Game />
+      <GameState.Provider value={setAppSt}>
+        {appSt === 'start' ? <StartPage /> : <Game />}
+      </GameState.Provider>
     </>
   );
 }

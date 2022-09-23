@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
-import Button from './Button.jsx';
-import Ship from './Ship.jsx';
+import React from 'react';
 import StarList from './StarList.jsx';
+import Ship from './Ship.jsx';
+import Button from './Button.jsx';
+import Points from './Points.jsx';
 
 export default function Game() {
   return (
     <div className='game'>
-      {console.log('game render')}
+      <Points />
       <StarList />
       <Ship />
       <br />
