@@ -30,7 +30,6 @@ export default function StartPage() {
       <u>
         <b>Top Scores</b>
       </u>
-      {console.log(topScores)}
       {topScores.map((score) => (
         <Score key={score._id} score={score} />
       ))}
