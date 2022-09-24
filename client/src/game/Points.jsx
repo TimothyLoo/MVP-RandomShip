@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { crashed } from '../stars.js';
+import { crashed, username } from '../stars.js';
 
 export default function Points() {
   const [points, setPoints] = useState(0);
@@ -14,7 +14,7 @@ export default function Points() {
 
   if (crashed) {
     axios
-      .post('/topScores', { username: 'TJ', score: points })
+      .post('/topScores', { username: username || 'guest', score: points })
       .catch((err) => console.log(err));
   }
 

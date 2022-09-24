@@ -15,4 +15,5 @@ module.exports = {
       ship.style.left = `${(position += 10)}px`;
     }
   },
+  username: null,
 };
