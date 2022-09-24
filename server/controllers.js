@@ -10,7 +10,7 @@ module.exports = {
 
   postTopScore: (req, res) => {
     models
-      .postTopScore()
+      .postTopScore(req.body)
       .then((result) => res.send(result))
       .catch((err) => res.send(err));
   },

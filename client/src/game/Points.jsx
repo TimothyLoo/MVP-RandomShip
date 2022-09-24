@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { crashed } from '../stars.js';
 
 export default function Points() {
@@ -11,7 +12,11 @@ export default function Points() {
     return () => clearInterval(interval);
   }, []);
 
-  if (crashed) console.log(points);
+  if (crashed) {
+    axios
+      .post('/topScores', { username: 'TJ', score: points })
+      .catch((err) => console.log(err));
+  }
 
   return (
     <div id='points'>

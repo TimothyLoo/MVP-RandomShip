@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import { crashed } from './stars.js';
 import { GameState } from './App.jsx';
+import Score from './Score.jsx';
 
 export default function StartPage() {
   const [topScores, setTopScores] = useState([]);
@@ -24,12 +25,14 @@ export default function StartPage() {
         }}>
         Start Game
       </button>
+      <button>Login</button>
       <br />
       <u>
         <b>Top Scores</b>
       </u>
+      {console.log(topScores)}
       {topScores.map((score) => (
-        <div>{score.score}</div>
+        <Score key={score._id} score={score} />
       ))}
     </div>
   );

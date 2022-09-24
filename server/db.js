@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-// const { ModuleFilenameHelpers } = require('webpack');
 
 const topScoreSchema = new mongoose.Schema({
+  username: String,
   score: Number,
 });
 
