@@ -26,6 +26,18 @@ body {
   justify-content: center;
 }
 
+.scores {
+  width: 500px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.score {
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+
 .game {
   width: 800px;
   height: 400px;

@@ -6,6 +6,7 @@ import Score from './Score.jsx';
 
 export default function StartPage() {
   const [topScores, setTopScores] = useState([]);
+  const [userTopScores, setUserTopScores] = useState([]);
   const [user, setUser] = useState(username);
 
   const setAppSt = useContext(GameState);
@@ -15,6 +16,10 @@ export default function StartPage() {
       .get('/topScores')
       .then(({ data }) => setTopScores(data))
       .catch((err) => console.log(err));
+    axios
+      .get(`/userTopScores/${username}`)
+      .then(({ data }) => setUserTopScores(data))
+      .catch((err) => console.log(err));
   }, []);
 
   const login = (e) => {
@@ -22,12 +27,20 @@ export default function StartPage() {
     let u = e.target.elements.username.value;
     if (u.length) {
       username = u;
+      axios
+        .get(`/userTopScores/${username}`)
+        .then(({ data }) => setUserTopScores(data))
+        .catch((err) => console.log(err));
       setUser(username);
     }
   };
 
   return (
     <div className='start'>
+      <span>Use the 'left' button or 'J' key to move left.</span>
+      <span>Use the 'right' button or 'L' key to move right.</span>
+      <span>Avoid the stars. Don't Crash.</span>
+      <br />
       <button
         onClick={() => {
           setAppSt('game');
@@ -44,12 +57,26 @@ export default function StartPage() {
         </form>
       )}
       <br />
-      <u>
-        <b>Top Scores</b>
-      </u>
-      {topScores.map((score) => (
-        <Score key={score._id} score={score} />
-      ))}
+      <div className='scores'>
+        {user ? (
+          <div>
+            <u>
+              <b>{user}'s Top Scores</b>
+            </u>
+            {userTopScores.map((score) => (
+              <Score key={score._id} score={score} />
+            ))}
+          </div>
+        ) : null}
+        <div>
+          <u>
+            <b>Top Scores</b>
+          </u>
+          {topScores.map((score) => (
+            <Score key={score._id} score={score} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
