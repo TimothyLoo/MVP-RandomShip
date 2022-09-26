@@ -11,9 +11,11 @@ module.exports = {
       ship.style.left = `${(position -= 10)}px`;
     }
     if (e.key === 'l' || e.target.innerHTML === 'right') {
-      if (position > 770) return;
+      if (position > 390 - 16 * module.exports.shipMult) return;
       ship.style.left = `${(position += 10)}px`;
     }
   },
   username: null,
+  shipMult: 1,
+  starMult: 1,
 };

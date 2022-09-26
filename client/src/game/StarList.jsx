@@ -6,7 +6,7 @@ import { stars } from '../stars.js';
 export default function StarList() {
   const [starList, setStars] = useState([...stars]);
 
-  const starPos = Math.floor(Math.random() * 780);
+  const starPos = Math.floor(Math.random() * 380);
   useEffect(() => {
     const interval = setInterval(() => {
       stars.push(uuidv4());
